@@ -1,0 +1,153 @@
+
+
+
+$base-color:#c6a534;
+
+
+*{
+  margin: 0;
+  padding: 0;
+}
+.sidebar{
+  transition: display 0s, opacity 0.5s linear;
+  background-color: #FFE600;
+  padding: 0;
+}
+body{
+  background-color: #f4f4f4;
+  overflow-x: hidden;
+  border: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+
+}
+.table-wrapper{
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+  padding-top:0 !important;
+
+}
+#hamburger{
+  position: absolute;
+  z-index: 10000;
+
+}
+ .card-header{
+  background-color: #FF7829;
+   color:white;
+   border:none;
+}
+.p-datatable .p-datatable-thead > tr > th {
+    background: #FFF4CE;
+ }
+.add-record-btn{
+  background-color: #FF7829;
+  border:none;
+  color:white;
+
+  &:hover{
+    color:white;
+  }
+}
+
+$breakpoint-tablet: 800px;
+$breakpoint-laptop: 1024px;
+@media (min-width: 320px) and (max-width: $breakpoint-tablet){
+  .col-9{
+    max-width: 98% !important;
+  }
+  .container{
+    max-width: 100% ;
+  }
+  .nav-toggle-btn{
+    display:none !important;
+  }
+  #sidebar{
+    display:none;
+  }
+  #hamburger{
+    display: block;
+  }
+  //.col-4{
+  //    flex: 0 0 100%;
+  //    max-width: 100%;
+  //}
+}
+
+@media (min-width: 850px){
+  #hamburger{
+    display: none;
+  }
+  //.nav-toggle-btn{
+  //  display: none;
+  //}
+  .sidebar-heading{
+    margin-left: 20px;
+  }
+}
+@media (min-width: 800px) and (max-width: 2560px){
+  #hamburger{
+    display: none;
+  }
+  .mobile-view-menu{
+    display:none;
+  }
+  .nav-toggle-btn{
+    display:block;
+  }
+  #sidebar{
+    display:block;
+  }
+  .sidebar-heading{
+    margin-left: 0;
+  }
+  .col-4{
+    max-width: 37.333333%;
+  }
+
+}
+@media (max-width: 800px) {
+  #hamburger{
+    display: none;
+  }
+  .outlet{
+    //flex: 0 0 100%;
+    //max-width: 100%;
+  }
+}
+@media (max-width: $breakpoint-tablet) {
+  #hamburger{
+    display: block;
+  }
+  .mobile-view-menu{
+    display:block;
+  }
+  .nav-toggle-btn{
+    display: none !important;
+  }
+  #sidebar{
+    display:none ;
+  }
+  .sidebar-heading{
+    margin-left: 20px;
+  }
+  .col-4{
+    flex: 0 0 41.666667%;
+    max-width: 41.333333%;
+  }
+}
+
+@media (max-width: 670px){
+  #hamburger{
+    display: block;
+  }
+  .sidebar-heading{
+    //display:none;
+    //font-size: 4vw !important;
+    margin-left: 20px;
+  }
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,0 +1,188 @@
+$base-color:#c6a534;
+
+.topnav {
+  overflow: hidden;
+  //background-color: #333;
+  background-color: #f7b90a;
+
+  position: fixed;
+  width:100%;
+  z-index: 1028;
+
+  a{
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 1px 4px;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  a.active{
+    background-color: #4CAF50;
+    color: white;
+  }
+  .navbar-links{
+    list-style-type: none;
+    li{
+      //float: left;
+      padding: 10px;
+      color: white;
+      cursor: pointer;
+      margin-left: 2%;
+      i{
+        font-size: 20px;
+      }
+    }
+  }
+
+}
+:host ::ng-deep  .pi-bars:before{
+  color: white;
+  font-size: 20px;
+
+}
+.dashboard-outlet-wrapper{
+  //max-width: 100%;
+  //flex:1 0 75%;
+  //height: 100vh;
+
+  .router-outlet-wrapper{
+    background-color: #f4f4f4;
+    //max-width: 100%;
+    //flex:1 0 75%;
+    //height: 100%;
+  }
+
+}
+:host ::ng-deep.p-button-icon{
+  //color:#FF7829;
+}
+:host ::ng-deep.p-sidebar{
+  box-shadow:none;
+  background-color:$base-color;
+  padding:0;
+}
+
+.sidebar-heading{
+  //background-color: #404040;
+  //background-color: #dea402;
+
+  //background-color: #f7b90a;
+  color:white;
+  //padding: 10px;
+  line-height: 1.4em;
+  font-size: 28px !important;
+  padding-bottom: 0.4em;
+  font-weight: 700;
+  padding-top: 0.5rem !important;
+
+}
+.sidebar-links{
+  list-style-type: none;
+  padding-left: 0px;
+  //margin-top:25%;
+
+  a{
+    text-decoration: none;
+  }
+  li{
+    padding: 20px 10px;
+    color:black;
+    font-size: 14px;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #EDD68C !important;
+    }
+    .nested-list-item{
+      padding-bottom: 0 !important;
+      padding-left: 22px;
+      transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+
+    }
+    .link-icon{
+      //color: #FF7829 !important;
+      color:black;
+    }
+  }
+}
+
+.list-group-item{
+  cursor: pointer;
+}
+
+
+:host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+  background: transparent !important;
+  color: black !important;
+  border-color: #dee2e6;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 20px 10px !important;
+}
+:host ::ng-deep .p-accordion .p-accordion-header .p-accordion-header-link {
+  padding: 18px 4px !important;
+  border: none !important;
+  color: black !important;
+  background: transparent !important;
+  font-weight: unset !important;
+  border-radius: 3px;
+  transition: box-shadow 0.2s;
+  font-size: 14px !important;
+  &:hover{
+    background-color: #EDD68C !important;
+  }
+}
+:host ::ng-deep .pi-chevron-down:before,:host ::ng-deep .pi-chevron-right:before{
+  content: "\e902" !important;
+  color: black !important;
+
+  .link-icon{
+  }
+}
+
+:host ::ng-deep .p-accordion-toggle-icon{
+  //display:none;
+
+}
+:host ::ng-deep  .p-accordion .p-accordion-header .p-accordion-header-link {
+    //padding: 1rem;
+    color: #495057;
+    border-radius: 3px;
+    transition: box-shadow 0.2s;
+    padding: 18px 4px !important;
+  }
+:host ::ng-deep    a:hover {
+      color: #0056b3;
+  text-decoration: none !important;
+
+  }
+:host ::ng-deep  .p-accordion .p-accordion-content {
+  color: #fff !important;
+  border: none !important;
+  background: transparent !important;
+  border-top: 0;
+  border-radius: 0 0 3px 3px;
+  cursor: pointer;
+  font-size: 14px !important;
+  padding: 0 !important;
+  padding-bottom: 0 !important;
+  //padding-left: 14px !important;
+  transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+  li{
+    //padding-top: 0 !important;
+    i{
+      margin-left: 27px;
+    }
+  }
+
+}
+:host ::ng-deep .p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none !important;
+  padding: 18px 4px !important;
+}
+
+
+

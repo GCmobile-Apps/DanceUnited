@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/android.iml" filepath="$PROJECT_DIR$/.idea/modules/android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/android.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/android.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1904798863/android.apple_sign_in.iml" filepath="$PROJECT_DIR$/.idea/modules/1904798863/android.apple_sign_in.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1856104408/android.flutter_facebook_login.iml" filepath="$PROJECT_DIR$/.idea/modules/1856104408/android.flutter_facebook_login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1152009692/android.flutter_plugin_android_lifecycle.iml" filepath="$PROJECT_DIR$/.idea/modules/1152009692/android.flutter_plugin_android_lifecycle.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/860309219/android.flutter_secure_storage.iml" filepath="$PROJECT_DIR$/.idea/modules/860309219/android.flutter_secure_storage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1122465868/android.fluttertoast.iml" filepath="$PROJECT_DIR$/.idea/modules/-1122465868/android.fluttertoast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-864922160/android.geolocator.iml" filepath="$PROJECT_DIR$/.idea/modules/-864922160/android.geolocator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1245338569/android.google_maps_flutter.iml" filepath="$PROJECT_DIR$/.idea/modules/1245338569/android.google_maps_flutter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/215659861/android.google_sign_in.iml" filepath="$PROJECT_DIR$/.idea/modules/215659861/android.google_sign_in.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1122131542/android.image_picker.iml" filepath="$PROJECT_DIR$/.idea/modules/-1122131542/android.image_picker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/612720064/android.multi_select_item.iml" filepath="$PROJECT_DIR$/.idea/modules/612720064/android.multi_select_item.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/664585752/android.path_provider.iml" filepath="$PROJECT_DIR$/.idea/modules/664585752/android.path_provider.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-161213335/android.permission_handler.iml" filepath="$PROJECT_DIR$/.idea/modules/-161213335/android.permission_handler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/1634812767/android.share.iml" filepath="$PROJECT_DIR$/.idea/modules/1634812767/android.share.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/703757525/android.shared_preferences.iml" filepath="$PROJECT_DIR$/.idea/modules/703757525/android.shared_preferences.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/-1960596623/android.url_launcher.iml" filepath="$PROJECT_DIR$/.idea/modules/-1960596623/android.url_launcher.iml" />
+    </modules>
+  </component>
+</project>

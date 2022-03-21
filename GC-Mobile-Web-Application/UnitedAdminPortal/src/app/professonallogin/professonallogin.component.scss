@@ -1,0 +1,24 @@
+.login-container{
+    background-size: cover;
+    background:  #333333 url("../../assets/images/Login.png");
+    height: 100vh;
+    width: 100%;
+    background-blend-mode: multiply;
+    .err-block{
+      font-size: 13px;
+      color:red;
+    }
+    .form-container{
+      //height: 60%;
+    }
+    .submit-btn{
+      background-color: #FFE600;
+      color: black;
+      border:none;
+    }
+    .password-reset-msg{
+      p{
+      }
+    }
+  }
+  

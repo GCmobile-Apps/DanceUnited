@@ -1,0 +1,80 @@
+
+<div class="container-fluid p-0">
+    <div class="login-container p-0 d-flex justify-content-center">
+        <div class="row  align-items-center">
+          <div class="col-12 bg-light form-container">
+            <div class="row text-center p-3">
+              <div class="col-12">
+                <h2>{{ifForgotPassword?'Reset Password':'User Login'}}</h2>
+
+              </div>
+            </div>
+            <form action="" class=" ml-6 p-4 pt-1 " #loginForm="ngForm" (ngSubmit)="login()">
+
+
+              <div class="col-12" *ngIf="ifForgotPassword">
+                <div  [class.has-error]="username.invalid && username.touched"
+                      [class.has-success]="username.valid">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="email" placeholder="Email Address"
+                         [(ngModel)]="user.email" #username="ngModel" name="username" required="">
+                </div>
+                <div class="err-block  p-mt-1" *ngIf="username.invalid && username.touched">
+                  Email Address is required
+                </div>
+                <div class="err-block  mt-1" *ngIf="invalidCredentials">
+                  User doesn't exist!
+                </div>
+                <button class="btn btn-primary col-12 mt-3 mb-3 submit-btn" type="button" (click)="forgotPassword()"
+                        [disabled]="loginForm.invalid" >Continue</button>
+              </div>
+
+
+
+              <div class=" col-12 " *ngIf="!ifForgotPassword">
+
+                <div class="password-reset-msg" *ngIf="passwordResetMsg">
+                  <p class="badge-secondary p-1 small ">Your new password has been sent to your email address.</p>
+                </div>
+
+                <div  [class.has-error]="username.invalid && username.touched"
+                      [class.has-success]="username.valid">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="username" placeholder="Email Address"
+                         [(ngModel)]="user.email" #username="ngModel" name="username" required="">
+                </div>
+                <div class="err-block  p-mt-1" *ngIf="username.invalid && username.touched">
+                  Email Address is required
+                </div>
+                <div  [class.has-error]="password.invalid && password.touched"
+                      [class.has-success]="password.valid">
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" id="password" placeholder="Password"
+                         [(ngModel)]="user.password" #password="ngModel" name="password" required="">
+                </div>
+                <div class="err-block  p-mt-1" *ngIf="password.invalid && password.touched">
+                  Password is required
+                </div>
+              </div>
+              <div class="col-12  mb-2" *ngIf="!ifForgotPassword">
+                <div class="err-block  mt-1" *ngIf="invalidCredentials">
+                  Invalid Credentials!
+                </div>
+                <button class="btn btn-primary col-12 mt-3 mb-3 submit-btn" type="submit" [disabled]="loginForm.invalid" >Submit</button>
+                <div class="forgot-pwd-btn text-center"  >
+                  <a (click)="ifForgotPassword= true;invalidCredentials = false" class="small text-info">Forgot Password?</a>
+                </div>
+                <div class="forgot-pwd-btn text-center"  >
+                  <a (click)="AdminloginRedirect()" class="small text-info">Admin Login?</a>
+                </div>
+              </div>
+
+            </form>
+          </div>
+        </div>
+
+    </div>
+  </div>

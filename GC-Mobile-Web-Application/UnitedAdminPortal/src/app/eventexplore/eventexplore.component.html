@@ -1,0 +1,199 @@
+<div class="containe">
+  <div class="content-box">
+    <div class="content-layout" >
+      <!--
+      Header Section
+  -->
+      <div class="search-section">
+        <div class="logo-section">
+          <img src="assets/images/Logo.png">
+        </div>
+        <div class="dropdowns-section">
+          <div class="dropdown">
+            <button class="dropbtn"> <span class="dropdown-text">{{this.dropdowntag}}</span>
+              <i class="fa fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a (click)="type('Kizomba')">Kizomba</a>
+              <a (click)="type('UrbanKiz')">UrbanKiz</a>
+              <a (click)="type('Douceur')">Douceur</a>
+              <a (click)="type('Semba')">Semba</a>
+              <a (click)="type('Zouk')">Zouk</a>
+              <a (click)="type('Bachata')">Bachata</a>
+              <a (click)="type('Bachata Sensual')">Bachata Sensual</a>
+              <a (click)="type('Domenican Bachata')">Domenican Bachata</a>
+              <a (click)="type('Salsa L.A. Style')">Salsa L.A. Style</a>
+              <a (click)="type('Cuban Salsa')">Cuban Salsa</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn">{{this.dropdownlocation}}
+              <i class="fa fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a (click)="locate('Malmö')">Malmö</a>
+              <a (click)="locate('Gothenburg')">Gothenburg</a>
+              <a (click)="locate('Oslo')">Oslo</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtndate">{{this.dropdownday}}
+              <i class="fa fa-chevron-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a (click)="day('Today')">Today</a>
+              <a (click)="day('Week')">Week</a>
+              <a (click)="day('Month')">Month</a>
+            </div>
+          </div>
+        </div>
+        <div class="loginbtn-section">
+          <div class="loginbtn-div">
+            <button class="loginbtn">
+              <img  src="assets/images/Group%20762.png">
+              <a (click)="loginRedirect()">Login</a></button>
+          </div>
+        </div>
+      </div>
+<!--
+      Waiting for data div
+-->
+      <div class="datawaiting" *ngIf="datadiv">
+
+      </div>
+      <!--
+        card section
+-->
+      <div class="eventcards-section" >
+        <div class="eventcards-section-heading">
+          <h6>We found these events for you</h6>
+        </div>
+        <!--
+           Api Loader
+     -->
+        <div class="api-loader" *ngIf="progressvalue" >
+          <p-progressBar mode="indeterminate" [style]="{'height': '6px'}" ></p-progressBar>
+        </div>
+
+        <div class="cards-section">
+          <div class="card" *ngFor="let b of this.events" >
+
+            <div class="card-image" (click)="showBasicDialog(b)">
+              <img src="{{b.ImageUrl}}" />
+            </div>
+            <div class="card-content">
+              <div class="event-detail">
+                <span class="eventname">{{b.Title}}</span>
+              </div>
+              <div class="eventdate">
+                <span class="startdate">{{b.StartDate | replaceUnderscore}}</span>
+                <!--  <span class="enddate">{{b.EndDate}}</span>-->
+                <span class="eventtime">{{b.endTime}}</span>
+              </div>
+              <div class="card-header">
+            <span class="card-header-image">
+              <img [src]="b.ProfilePicture">
+            </span>
+                <span class="card-header-text">
+                <span class="card-header-text-heading">{{b.OrganizerName}}</span>
+              <span class="card-header-text-para">Event Organizers</span>
+            </span>
+              </div>
+              <div class="card-para">
+            <span class="para-heading">
+             Details
+            </span>
+                <p>{{b.Description}}</p>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        <!--
+                Card Modal View Section
+        -->
+        <div class="cardmodal-view" >
+          <p-dialog  [(visible)]="displayBasic" [modal]="true"  [baseZIndex]="10000"
+                     [draggable]="false" [resizable]="false" [dismissableMask]="true">
+            <div class="Modal-image">
+              <img alt="Event_image" src="{{this.cardDetil?.ImageUrl}}" width="360" height="120" />
+            </div>
+            <div class="Modal-content">
+              <div class="Modal-event-detail">
+                <span class="Modal-eventname">{{this.cardDetil?.Title}}</span>
+              </div>
+              <div class="Modal-eventdate">
+
+                <span class="Modal-startdate">{{this.cardDetil?.StartDate | date: 'dd.MM.yyyy' }}</span>
+                <!--<span class="Modal-enddate">{{this.cardDetil?.EndDate | date: 'dd-MM-yyyy'}}</span>-->
+                <span class="Modal-eventtime">{{this.cardDetil?.endTime}}</span>
+              </div>
+              <div class="Modal-card-header">
+            <span class="Modal-card-header-image">
+              <img [src]="this.cardDetil?.ProfilePicture">
+            </span>
+                <span class="Modal-card-header-text">
+              <span class="Modal-card-header-text-heading">{{this.cardDetil?.OrganizerName}}</span>
+              <span class="Modal-card-header-text-para">Event Organizers</span>
+            </span>
+              </div>
+              <div class="Modal-card-para">
+            <span class="Modal-para-heading">
+             Details
+            </span>
+                <p>{{this.cardDetil?.Description}}</p>
+              </div>
+            </div>
+          </p-dialog>
+        </div>
+
+
+      </div>
+    </div>
+    <!--
+   Footer
+  -->
+
+
+    <div class="footer-section"  *ngIf="footer">
+
+      <div class="socialmedia-piclinks" >
+        <div class="imagelink">
+          <span>Find the right style for you</span>
+          <a href="https://danceunited.se/dance_styles/" target="_blank">
+            <img src="assets/images/Group%20916.png">
+          </a>
+        </div>
+        <div class="imagelink">
+          <span>Learn more about dance in your city</span>
+          <a href="www.danceunited.se" target="_blank">
+            <img src="assets/images/Main0%204.png">
+          </a>
+        </div>
+        <div class="imagelink" >
+          <span>DanceUnited on Instagram</span>
+          <a href="https://www.instagram.com/dance_united_official/" target="_blank">
+            <img src="assets/images/Group%20913.png">
+          </a>
+        </div>
+
+      </div>
+      <div class="footer-text">
+        <span class="gcmobilecopyright">© GC mobile 2021</span>
+        <span class="privacypolicy">All rights reserved. Use of this site constitutes in acceptance of our <a style="color:#f7f7f7" href="http://danceunited.se/privacy-policy/">Terms and Conditions</a> Agreement and <a style="color:#f7f7f7" href="http://danceunited.se/privacy-policy/">Privacy Policy </a> and Cookie Statement. The material of this site may not be reproduced, distributed, transmitted, cached, or otherwise used, except with prior written permission of GC mobile.</span>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+</div>
+
+
+
+
+

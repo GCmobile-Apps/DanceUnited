@@ -1,0 +1,69 @@
+
+
+
+<div class="row mt-5 d-flex justify-content-center" *ngIf="preferences.length === 0">
+  <div class="col-7">
+    <p-card>
+      <p>No Styles have been added yet.</p>
+      <button  type="button" class="add-record-btn btn " (click)="displayModal = true">
+        Add New
+        <i class="fa fa-plus"></i>
+      </button>
+    </p-card>
+  </div>
+</div>
+
+<div class="container p-5 table-wrapper" *ngIf="preferences.length !== 0">
+  <div class="row">
+    <p-toast></p-toast>
+    <div class="col-12">
+      <h1>Dance Styles</h1>
+      <p-table [value]="preferences" class="allEventsTable"
+               [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,20]">
+        <ng-template pTemplate="colgroup" let-columns>
+          <colgroup>
+            <col style="width:250px">
+            <col style="width:250px">
+            <col style="width:250px">
+
+          </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Preferences ID</th>
+            <th>Preferences Name</th>
+            <th>
+
+              <button  type="button" class="add-record-btn btn " (click)="displayModal = true">
+                Add New
+                <i class="fa fa-plus"></i>
+              </button>
+
+            </th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-preference>
+          <tr>
+            <td>{{preference.PreferenceID}}</td>
+            <td>{{preference.PreferenceName}}</td>
+            <td></td>
+
+          </tr>
+        </ng-template>
+      </p-table>
+      <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+  </div>
+</div>
+<p-dialog [modal]="true" [style]="{width: '40vw'}" header="Add New Style" [(visible)]="displayModal">
+  <form #prefForm="ngForm" (ngSubmit)="addNewPreference(prefForm)">
+    <div class="form-group">
+      <label>Preference Name</label><br>
+      <input type="text" name="PreferenceName" ngModel class="form-control">
+    </div>
+    <button type="submit" class="add-record-btn btn" >
+      Add Preference
+    </button>
+  </form>
+</p-dialog>

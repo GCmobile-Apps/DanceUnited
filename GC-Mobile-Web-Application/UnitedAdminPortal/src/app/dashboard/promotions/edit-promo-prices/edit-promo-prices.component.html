@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <p-toast></p-toast>
+
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-3 single-price">
+      <h5>Main Screen Promotion</h5>
+      <input type="text" class="form-control" placeholder="Enter Price" #msprice>
+      <button class="btn add-record-btn col-12 mt-4" (click)="editPromoPrices('mainscreenpromo',msprice)">Update</button>
+    </div>
+    <div class="col-md-3 single-price">
+      <h5>Full Screen Promotion</h5>
+      <input type="text" class="form-control" placeholder="Enter Price" #fsprice>
+      <button class="btn add-record-btn col-12 mt-4" (click)="editPromoPrices('fullscreenpromo',fsprice)">Update</button>
+
+
+    </div>
+    <div class="col-md-3 single-price">
+      <h5>Special Promotion</h5>
+      <input type="text" class="form-control" placeholder="Enter Price" #newsprice>
+      <button class="btn add-record-btn col-12 mt-4" (click)="editPromoPrices('newspromo',newsprice)">Update</button>
+
+
+    </div>
+  </div>
+</div>

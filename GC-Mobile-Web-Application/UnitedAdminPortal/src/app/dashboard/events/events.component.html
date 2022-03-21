@@ -1,0 +1,318 @@
+<p-toast></p-toast>
+
+<div class="container p-5" style="padding-top: 0 !important;">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">Add Event</div>
+        <div class="card-body">
+          <div class="no-user-error-msg" *ngIf="proUsers.length===0">
+            <p class=" text-danger">Please add a professional user first.</p>
+          </div>
+          <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)">
+            <div class="form-group">
+              <div  [class.has-error]="title.invalid && title.touched"
+                    [class.has-success]="title.valid">
+              <label for="eventName">Event Name</label>
+              <input type="text" class="form-control" name="Title" id="eventName" ngModel required="" #title="ngModel">
+                <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="title.invalid && title.touched">
+                       Event Name is required
+                      </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-lg-12">
+                <div class="form-group">
+                  <input type="hidden" class="form-control" name="EventID" [(ngModel)]="EventID">
+
+                  <div  [class.has-error]="type.invalid && type.touched"
+                        [class.has-success]="type.valid">
+                    <label for="hostType">Event Type</label>
+                    <select class="form-control" name="hostType" id="hostType" ngModel required #type="ngModel">
+                      <option value="Social">Social</option>
+                      <option value="Party">Party</option>
+                      <option value="Classes">Classes</option>
+                      <option value="Festival">Festival</option>
+                    </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="type.invalid && type.touched">
+                       Event Type is required
+                </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-12">
+                <div class="form-group">
+                  <div  [class.has-error]="prouser.invalid && prouser.touched"
+                        [class.has-success]="prouser.valid">
+                    <label for="proUser">Select Professional User</label>
+                    <select class="form-control" name="proUser" id="proUser" ngModel required #prouser="ngModel">
+                      <option *ngFor="let user of proUsers" [value]="user.userID">
+                        {{user.title}}
+                      </option>
+                    </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="prouser.invalid && prouser.touched">
+                       This field is required
+                </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="start.invalid && start.touched"
+                        [class.has-success]="start.valid">
+                  <label for="startDate">Start Date</label><br>
+                  <p-calendar name="StartDate" id="startDate" dateFormat="yy-mm-dd" ngModel required #start="ngModel"></p-calendar>
+                  <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="start.invalid && start.touched">
+                       Start Date is required
+                  </span>
+                </div>
+              </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="end.invalid && end.touched"
+                        [class.has-success]="end.valid">
+                    <label for="EndDate">End Date</label>
+                    <p-calendar name="endDate" id="EndDate" dateFormat="yy-mm-dd" ngModel required #end="ngModel">
+                    </p-calendar>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="start.invalid && start.touched">
+                       End Date is required
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="startTime.invalid && startTime.touched"
+                        [class.has-success]="startTime.valid">
+                  <label for="startTime">Start Time</label>
+                  <p-calendar [timeOnly]="true" hourFormat="12" class="timer" name="startTime" id="startTime"
+                              ngModel required #startTime="ngModel" >
+                  </p-calendar>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="startTime.invalid && startTime.touched">
+                       Start Time is required
+                  </span>
+                </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="endTime.invalid && endTime.touched"
+                        [class.has-success]="endTime.valid">
+                    <label for="endTime">End Time</label>
+                    <p-calendar [timeOnly]="true" hourFormat="12" class="timer" name="endTime" id="endTime" ngModel required
+                                #endTime="ngModel">
+                    </p-calendar>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="endTime.invalid && endTime.touched">
+                         End Time is required
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="Tags.invalid && Tags.touched"
+                        [class.has-success]="Tags.valid">
+                  <label for="preference">Select main preferences</label>
+                  <select class="form-control" id="preference" name="Tags" ngModel
+                          #Tags="ngModel">
+                    <option selected="selected">
+                      None
+                    </option>
+                    <option *ngFor="let prefer of preferences">
+                      {{prefer.label}}
+                    </option>
+
+                  </select>
+
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="Tags.invalid && Tags.touched">
+                       Tags is required
+                  </span>
+                  </div>
+                </div>
+
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="notRepeat.invalid && notRepeat.touched"
+                        [class.has-success]="notRepeat.valid">
+                  <label for="doNotRepeat">Does not repeat</label>
+                  <select class="form-control" id="doNotRepeat" name="notRepeat" ngModel
+                          #notRepeat="ngModel">
+                    <option *ngFor="let day of weekDays" value="{{day.value}}">{{day.label}}</option>
+                  </select>
+<!--                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="notRepeat.invalid && notRepeat.touched">-->
+<!--                       Field is required-->
+<!--                  </span>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="location.invalid && location.touched"
+                        [class.has-success]="location.valid">
+                  <label for="Location">Location</label>
+                  <input type="text" class="form-control" name="Location" id="location"  ngModel required
+                         #location="ngModel">
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="location.invalid && location.touched">
+                       Location is required
+                  </span>
+                    <span class="text-info mb-1 p-mt-0 ml-1 small" >
+                       <i class="fa fa-question-circle"></i>
+                      e.g Islamabad
+                  </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="country.invalid && country.touched"
+                        [class.has-success]="country.valid">
+                    <label for="country">Country</label>
+                    <input type="text" class="form-control" name="country" id="country"  ngModel required
+                           #country="ngModel">
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="country.invalid && country.touched">
+                       Country is required
+                  </span>
+                    <span class="text-info mb-1 p-mt-0 ml-1 small" >
+                       <i class="fa fa-question-circle"></i>
+                      e.g Pakistan
+                  </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="style1.invalid && style1.touched"
+                        [class.has-success]="style1.valid">
+                    <label for="relatedStyle1">Select Related Style 1</label>
+                    <select class="form-control" id="relatedStyle1" name="relatedStyle1" ngModel
+                            #style1="ngModel" >
+                      <option selected="selected">
+                        None
+                      </option>
+                      <option *ngFor="let prefer of preferences">
+                        {{prefer.label}}
+                      </option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="style2.invalid && style2.touched"
+                        [class.has-success]="style2.valid">
+                  <label for="relatedStyle2">Select Related Style 2</label>
+                  <select class="form-control" id="relatedStyle2" name="relatedStyle2" ngModel
+                          #style2="ngModel">
+                    <option selected="selected">
+                      None
+                    </option>
+                    <option *ngFor="let prefer of preferences">
+                      {{prefer.label}}
+                    </option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <div  [class.has-error]="style3.invalid && style3.touched"
+                        [class.has-success]="style3.valid">
+                    <label for="relatedStyle3">Select Related Style 3</label>
+                    <select class="form-control" id="relatedStyle3" name="relatedStyle3" ngModel
+                            #style3="ngModel">
+                      <option selected="selected">
+                        None
+                      </option>
+                      <option *ngFor="let prefer of preferences">
+                        {{prefer.label}}
+                      </option>
+                    </select>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                  <div>
+                    <label for="SeriesEndDate">Series End at</label>
+                    <p-calendar name="SeriesEndDate" id="SeriesEndDate" dateFormat="yy-mm-dd" ngModel #end="ngModel">
+                    </p-calendar>
+
+                  </div>
+                </div>
+              </div>
+<!--              <div class="col-6">-->
+<!--                <div class="form-group">-->
+<!--                  <div  [class.has-error]="vc.invalid && vc.touched"-->
+<!--                        [class.has-success]="vc.valid">-->
+<!--                  <label>View Counter</label>-->
+<!--                  <input type="number" value="42" class="form-control" name="viewCounter"ngModel min="0" required-->
+<!--                         #vc="ngModel">-->
+<!--                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="vc.invalid && vc.touched">-->
+<!--                       Required-->
+<!--                  </span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+            </div>
+
+            <div class="form-group">
+              <div  [class.has-error]="file.invalid && file.touched"
+                    [class.has-success]="file.valid">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="eventImage" name="ImageUrl"
+                  #fileInput (change)="onFileChanged($event)" required #file="ngModel" ngModel>
+                  <label class="custom-file-label" for="eventImage">{{imgName!=''?imgName:'Choose Image'}}</label>
+                </div>
+              </div>
+              <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="file.invalid && file.touched">
+                       Required
+                  </span>
+            </div>
+
+            <div class="form-group">
+              <div  [class.has-error]="desc.invalid && desc.touched"
+                    [class.has-success]="desc.valid">
+              <label for="description">Event Description</label>
+              <textarea type="text" class="form-control" name="Description" id="description" ngModel
+              required #desc="ngModel"></textarea>
+                <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="desc.invalid && desc.touched">
+                       Required
+                  </span>
+            </div>
+            </div>
+
+
+            <button type="submit" class="btn  add-record-btn" [disabled]="userForm.invalid">Create Event</button>
+          </form>
+
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+
+<span (click)="toggleSidebar()"  id="hamburger"><i class="fa fa-bars fa-2x"></i></span>
+
+<div class="container-fluid">
+
+
+  <div class="row" >
+
+    <div class="sidebar col-2 " style="min-height: 100vh" id="sidebar">
+        <p-scrollPanel [style]="{width: '100%'}" >
+          <ul class="sidebar-links">
+            <div class="p-3  text-dark text-center">
+              <h4 class="font-weight-bold">Dance United</h4>
+            </div>
+            <p-accordion [multiple]="true" >
+              <p-accordionTab header="Events" >
+                <a routerLink="events">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-plus mr-2 link-icon"></i>Add Event
+                  </li>
+                </a>
+                <a routerLink="listevent">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-calendar mr-2 link-icon"></i>
+                    List Events
+                  </li>
+                </a>
+
+              </p-accordionTab>
+            </p-accordion>
+            <p-accordion [multiple]="true" >
+              <p-accordionTab header="Users" >
+                <a routerLink="users">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-user-plus mr-2 link-icon"></i>Add User
+                  </li>
+                </a>
+                <a routerLink="allUsers">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-users mr-2 link-icon"></i>List Users
+                  </li>
+                </a>
+                <a routerLink="allProUsers">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-users mr-2 link-icon"></i>Professional Users
+                  </li>
+                </a>
+
+              </p-accordionTab>
+            </p-accordion>
+
+            <p-accordion [multiple]="true" >
+              <p-accordionTab header="Promotions" >
+                <a routerLink="addPromo">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-plus-square mr-2 link-icon"></i>Add Promotion
+                  </li>
+                </a>
+                <a routerLink="promotions">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-bullhorn mr-2 link-icon"></i>List Promotions
+                  </li>
+                </a>
+                <a routerLink="editPromoPrices">
+                  <li class="nested-list-item"  >
+                    <i class="fa fa-edit mr-2 link-icon"></i>Edit Prices
+                  </li>
+                </a>
+              </p-accordionTab>
+            </p-accordion>
+
+            <a routerLink="updateLinks">
+              <li><i class="fa fa-refresh mr-2 link-icon"></i>Update Links</li>
+            </a>
+            <a routerLink="updateDanceStyles">
+              <li><i class="fa fa-edit mr-2 link-icon"></i>Update Dance Styles</li>
+            </a>
+            <a routerLink="overview">
+              <li><i class="fa fa-eye mr-2 link-icon"></i>Overview</li>
+            </a>
+
+            <!--          <a>-->
+            <!--            <li><i class="fa fa-asterisk mr-2 link-icon"></i>Others</li>-->
+            <!--          </a>-->
+            <a (click)="logout()">
+              <li><i class="fa fa-sign-out mr-2 link-icon"></i>Logout</li>
+            </a>
+
+
+          </ul>
+        </p-scrollPanel>
+      </div>
+
+    <div class="outlet   mt-1 " [ngClass]="toggleNavbar?'col-9':'col-9'" >
+      <router-outlet></router-outlet>
+
+    </div>
+
+  </div>
+</div>
+

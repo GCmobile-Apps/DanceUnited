@@ -1,0 +1,212 @@
+<div class="container p-5" style="padding-top: 0 !important;">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">Add Promo</div>
+        <div class="card-body">
+          <div class="no-user-error-msg" *ngIf="events.length===0">
+            <p class=" text-danger">Please create an event first.</p>
+          </div>
+          <form #promoForm="ngForm" (ngSubmit)="addPromotion(promoForm)">
+            <div class="row">
+              <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="promoID" hidden  [(ngModel)]="promoID">
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="type.invalid && type.touched"
+                        [class.has-success]="type.valid">
+                  <label>Select Promotion Type</label>
+                  <select class="form-control"  name="promoParentType" ngModel required
+                          #type="ngModel">
+                    <option *ngFor="let category of promotionCategories" value="{{category.value}}">
+                      {{category.label}}
+                    </option>
+                  </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="type.invalid && type.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="category.invalid && category.touched"
+                        [class.has-success]="category.valid">
+                  <label>Select Promotion Category</label>
+                  <select class="form-control"  name="promoType" ngModel required
+                          #category="ngModel">
+                    <option value="Internal Promo">Internal Promo</option>
+                    <option value="External Promo">External Promo</option>
+                  </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="category.invalid && category.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="promoForm.value.promoType !== 'External Promo'">
+                  <div  [class.has-error]="event.invalid && event.touched"
+                        [class.has-success]="event.valid">
+                  <label>Select Event</label>
+                  <select class="form-control"  name="eventID" ngModel required
+                          #event="ngModel">
+                    <option *ngFor="let event of events" value="{{event.EventID}}">
+                      {{event.Title}}
+                    </option>
+                  </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="event.invalid && event.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="user.invalid && user.touched"
+                        [class.has-success]="user.valid">
+                  <label>Select User</label>
+                  <select class="form-control"  name="userID" ngModel required
+                          #user="ngModel">
+                    <option *ngFor="let user of users" value="{{user.userID}}">
+                      {{user.title}}
+                    </option>
+                  </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="user.invalid && user.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="title.invalid && title.touched"
+                        [class.has-success]="title.valid">
+                  <label>Offer Title</label>
+                  <input type="text" class="form-control" name="offerTitle"  ngModel required
+                         #title="ngModel">
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="title.invalid && title.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="promoForm.value.promoType === 'External Promo'">
+                  <div  [class.has-error]="dest.invalid && dest.touched"
+                        [class.has-success]="dest.valid">
+                  <label>Destination Link</label>
+                  <input type="text" class="form-control" name="destinationLink"  ngModel required
+                         #dest="ngModel">
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="dest.invalid && dest.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-sm-12 mt-3">
+                <div class="form-group">
+                  <div  [class.has-error]="city.invalid && city.touched"
+                        [class.has-success]="city.valid">
+                  <label>Promo City</label>
+                  <input type="text" class="form-control" name="promoCity"  ngModel
+                         #city="ngModel">
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="city.invalid && city.touched">
+                       Required
+                  </span>
+                    <span class="text-info mb-1 p-mt-0 ml-1 small" >
+                       <i class="fa fa-question-circle"></i>
+                      e.g Pakistan,Lahore
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="style.invalid && style.touched"
+                        [class.has-success]="style.valid">
+                  <label>Select Main Style</label>
+                  <select class="form-control"  name="mainStyle" ngModel required
+                          #style="ngModel">
+                    <option selected="selected">
+                      None
+                    </option>
+                    <option *ngFor="let style of danceStyles">
+                      {{style.label}}
+                    </option>
+                  </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="style.invalid && style.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="style1.invalid && style1.touched"
+                        [class.has-success]="style1.valid">
+                  <label>Select Related Style 1</label>
+                  <select class="form-control"  name="relatedStyle1" ngModel
+                          #style1="ngModel">
+                    <option selected="selected">
+                      None
+                    </option>
+                    <option *ngFor="let style of danceStyles">
+                      {{style.label}}
+                    </option>
+                  </select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="style2.invalid && style2.touched"
+                        [class.has-success]="style2.valid">
+                  <label>Select Related Style 2</label>
+                  <select class="form-control"  name="relatedStyle2" ngModel
+                          #style2="ngModel">
+                    <option selected="selected">
+                      None
+                    </option>
+                    <option *ngFor="let style of danceStyles">
+                      {{style.label}}
+                    </option>
+                  </select>
+                  </div>
+
+                </div>
+                <div class="form-group">
+                  <div  [class.has-error]="style3.invalid && style3.touched"
+                        [class.has-success]="style3.valid">
+                  <label>Select Related Style 3</label>
+                  <select class="form-control"  name="relatedStyle3" ngModel
+                          #style3="ngModel">
+                    <option selected="selected">
+                      None
+                    </option>
+                    <option *ngFor="let style of danceStyles">
+                      {{style.label}}
+                    </option>
+                  </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <div  [class.has-error]="file.invalid && file.touched"
+                        [class.has-success]="file.valid">
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="eventImage" name="ImageUrl"
+                           #fileInput (change)="onFileChanged($event)" required
+                           #file="ngModel" ngModel>
+                    <label class="custom-file-label" for="eventImage">
+                      {{imgName!=''?imgName:'Choose Image'}}
+                    </label>
+                  </div>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="file.invalid && file.touched">
+                       Required
+                  </span>
+                </div>
+                </div>
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn  add-record-btn" [disabled]="promoForm.invalid">Add Promo</button>
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

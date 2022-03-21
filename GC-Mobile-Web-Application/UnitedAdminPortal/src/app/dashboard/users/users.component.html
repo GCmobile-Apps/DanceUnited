@@ -1,0 +1,296 @@
+<div class="container p-5 " style="padding-top:0 !important;">
+  <p-toast></p-toast>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">Add User</div>
+        <div class="card-body">
+          <p-progressBar [value]="value" *ngIf="displayProgressBar"></p-progressBar>
+          <div class="text-center text-success" *ngIf="displayProgressBar">
+            Please wait while user is being saved...
+          </div>
+
+          <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm)" *ngIf="!displayProgressBar">
+            <div class="form-group">
+              <input type="hidden" class="form-control" name="UserID" [(ngModel)]="UserID">
+            </div>
+            <div class="row">
+              <div class="col-12 ">
+                <div class="p-field mb-3">
+                  <label>User Type</label><br>
+                  <p-dropdown [(ngModel)]="userType"  [options]="userTypes" optionValue="value" placeholder="Select User Type"
+                  (ngModelChange)="switchForm()" name="type">
+                    <ng-template let-option pTemplate="item">
+                      <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+                    </ng-template>
+                  </p-dropdown>
+                </div>
+              </div>
+            </div>
+              <div class="row">
+                <div class="col-md-6 col-sm-12" *ngIf="!isProfessional">
+                  <div class="form-group">
+                    <div  [class.has-error]="fname.invalid && fname.touched"
+                          [class.has-success]="fname.valid">
+                    <label for="FirstName">Name</label>
+                    <input type="text" class="form-control" name="FirstName" id="FirstName" ngModel
+                    required #fname="ngModel">
+                      <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="fname.invalid && fname.touched">
+                       Required
+                  </span>
+                  </div>
+                </div>
+                </div>
+                <div class="col-md-6 col-sm-12" *ngIf="isProfessional">
+                  <div class="form-group" >
+                    <div  [class.has-error]="ptitle.invalid && ptitle.touched"
+                          [class.has-success]="ptitle.valid">
+                      <label for="title">Name</label>
+                      <input type="text" class="form-control" name="title" id="title" ngModel
+                      required #ptitle="ngModel">
+                      <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="ptitle.invalid && ptitle.touched">
+                       Name is Required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="email.invalid && email.touched"
+                          [class.has-success]="email.valid">
+                    <label for="Email">Email</label>
+                    <input type="text" class="form-control" name="Email" id="Email" ngModel
+                    required #email="ngModel">
+                      <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="email.invalid && email.touched">
+                       Email is Required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12" hidden>
+                  <div class="form-group">
+                    <label for="LastName">Last Name</label>
+                    <input type="text" class="form-control" name="LastName" id="LastName" ngModel>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="pass.invalid && pass.touched"
+                          [class.has-success]="pass.valid">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" ngModel
+                           required #pass="ngModel">
+                      <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="pass.invalid && pass.touched">
+                       Password is Required
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="stAd.invalid && stAd.touched"
+                          [class.has-success]="stAd.valid">
+                    <label for="streetAddress">Street Address</label>
+                    <input type="text" class="form-control" name="StreetAddress" id="streetAddress" ngModel
+                           #stAd="ngModel">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" hidden>
+                <div class="col-md-6 col-sm-12" hidden>
+                  <div class="form-group">
+                    <label for="ContactNumber">ContactNumber</label>
+                    <input type="text" class="form-control" name="ContactNumber" id="ContactNumber" ngModel>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12" hidden>
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" name="username" id="username" ngModel>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row">
+
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="city.invalid && city.touched"
+                          [class.has-success]="stAd.valid">
+                    <label for="City">City</label>
+                    <input type="text" class="form-control" name="City" id="City" ngModel
+                            #city="ngModel">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="country.invalid && country.touched"
+                          [class.has-success]="country.valid">
+                    <label for="Country">Country</label>
+                    <input type="text" class="form-control" name="Country" id="Country" ngModel
+                            #country="ngModel">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="description.invalid && description.touched"
+                          [class.has-success]="description.valid">
+                      <label for="Zipcode">Description</label>
+                      <textarea  pInputTextarea class="form-control" name="description" id="description" ngModel
+                                  #description="ngModel"></textarea>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <div class="form-group">
+                    <div  [class.has-error]="zipcode.invalid && zipcode.touched"
+                          [class.has-success]="zipcode.valid">
+                      <label for="Zipcode">Zipcode</label>
+                      <input type="text" class="form-control" name="ZipCode" id="Zipcode" ngModel
+                            #zipcode="ngModel">
+
+                  </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group">
+                  <label>Profile Picture</label>
+                  <div class="custom-file">
+                    <div  [class.has-error]="file.invalid && file.touched"
+                          [class.has-success]="file.valid">
+                      <input type="file" class="custom-file-input" id="profilePictureLink"
+                             name="profilePictureLink" #inputFile (change)="onFileChanged($event)"
+                             required #file="ngModel" ngModel>
+                      <label class="custom-file-label" for="profilePictureLink">{{imgName!==''?imgName:'Profile Picture'}}</label>
+                      <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="file.invalid && file.touched">
+                         Required
+                        </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group"  *ngIf="isProfessional">
+                  <div  [class.has-error]="sfile.invalid && sfile.touched"
+                        [class.has-success]="sfile.valid">
+                    <label>Brand Picture</label>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="secondaryProfilePictureLink"
+                             name="secondaryProfilePictureLink" #secondFile (change)="onSecondFileChanged($event)"
+                             required #sfile="ngModel" ngModel>
+                      <label class="custom-file-label" for="secondaryProfilePictureLink">{{secondImageName!==''?secondImageName:'Brand Picture'}}</label>
+                      <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="sfile.invalid && sfile.touched">
+                         Required
+                        </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group"  *ngIf="isProfessional">
+                  <div  [class.has-error]="dfile.invalid && dfile.touched"
+                        [class.has-success]="dfile.valid">
+                    <label>Dance Schedule</label>
+                    <div class="custom-file">
+                      <input type="file" class="custom-file-input" id="calenderViewLink"
+                             name="calenderViewLink" #calendarViewFile (change)="onCalendarFileChanged($event)"
+                             #dfile="ngModel" ngModel>
+                      <label class="custom-file-label" for="calenderViewLink">{{calenderImageName!==''?calenderImageName:'Dance Schedule'}}</label>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group" *ngIf="!isProfessional">
+                  <div  [class.has-error]="pref1.invalid && pref1.touched"
+                        [class.has-success]="pref1.valid">
+                    <label for="Preference1">Select Preference 1</label>
+                    <select class="form-control" id="Preference1" name="Preference1" ngModel
+                            required #pref1="ngModel">
+                      <option *ngFor="let pref of preferences">
+                        {{pref.label}}
+                      </option>
+
+                    </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="pref1.invalid && pref1.touched">
+                         Required
+                        </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group" *ngIf="!isProfessional">
+                  <div  [class.has-error]="pref2.invalid && pref2.touched"
+                        [class.has-success]="pref2.valid">
+                    <label for="Preference2">Select Preference 2</label>
+                    <select class="form-control" id="Preference2" name="Preference2" ngModel required #pref2="ngModel">
+                      <option *ngFor="let pref of preferences">
+                        {{pref.label}}
+                      </option>
+                    </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="pref2.invalid && pref2.touched">
+                         Required
+                        </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12">
+                <div class="form-group" *ngIf="!isProfessional">
+                  <div  [class.has-error]="pref3.invalid && pref3.touched"
+                        [class.has-success]="pref3.valid">
+                    <label for="Preference3">Select Preference 3</label>
+                    <select class="form-control" id="Preference3" name="Preference3" ngModel
+                            required #pref3="ngModel">
+                      <option *ngFor="let pref of preferences">
+                        {{pref.label}}
+                      </option>
+                    </select>
+                    <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="pref3.invalid && pref3.touched">
+                         Required
+                        </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn  add-record-btn" [disabled]="userForm.invalid">Create User</button>
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>

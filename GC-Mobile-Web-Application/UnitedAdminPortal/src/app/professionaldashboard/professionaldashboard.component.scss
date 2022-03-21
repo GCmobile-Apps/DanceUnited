@@ -1,0 +1,1188 @@
+
+.containerbox {
+  display: flex;
+  width: 100%;
+   height: 100vh;   
+
+   }
+   .content-layout {
+    display: flex;
+    flex-direction:row;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+   }
+.contentsidebar{
+  display: flex;
+  flex-direction: column;
+  width:15%;
+  height: 100%;
+  background-color:#FCE54D;
+  justify-content: space-between;
+}
+   .maincontent{
+    display: flex;
+    flex-direction: column;
+   width:100%;
+   height: 100%;
+   background-color: #F5F3F3;
+
+
+   }
+   .createevent-modal
+   {
+     width:100%;
+     height: 20%;
+     display: flex;
+     margin-bottom: 60px;
+
+   }
+   .logo-section {
+     height:20%;
+     width: 100%;
+     padding-left:20px;
+     padding-top:20px;
+     display: flex;
+     flex-direction: row;
+     margin-bottom:15px;
+   }
+   .logo-section img{
+     width: 80.83px;
+     height: 80.83px;
+  }
+   .textandbutton{
+    margin-top: 20px;
+  padding-left: 40px;
+  width:30%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+   }
+   .hellotext{
+     margin-bottom: 10px;
+     font-size: 20px;
+     font-weight: bold;
+   }
+   .textandbutton button{
+    background: linear-gradient(268.98deg, #FE4059 -1.23%, #FE7230 95.9%);
+  color:white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+ border-radius: 15px;
+ width:50%;
+height:40%;
+   }
+   .loginbtn-section {
+     height: 33%;
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     padding-top: 130px;
+     padding-left:20px;
+
+   }
+   .loginbtn-div{
+     width:80%;
+     height:60%;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: center;
+   }
+   .loginbtn-div button{
+     width:100%;
+     height:60%;
+     border:none;
+     border-radius: 15px;
+     background: linear-gradient(268.98deg, #FF3F58 -1.23%, #FFA901 95.9%);
+     color:white;
+     font-size:16px;
+
+   }
+   .loginbtn img{
+     width:26px;
+   }
+
+   :host ::ng-deep .p-dialog{
+     width: 80vw;
+   }
+
+
+   :host ::ng-deep .p-dialog .p-dialog-content {
+     color: #495057;
+    // padding: 0 1.5rem 2rem 1.5rem;
+     border-bottom-left-radius: 10px;
+     border-bottom-right-radius: 10px;
+     width:100%;
+     //height: 100%;
+     display:flex;
+     flex-direction:row;
+     justify-content: space-evenly;
+
+   }
+   :host ::ng-deep .p-dialog .p-dialog-header {
+     border-bottom: 0 none;
+     background: #ffffff;
+     color: black;
+     padding: 1.5rem;
+     border-top-right-radius: 10px;
+     border-top-left-radius: 10px;
+   }
+   :host ::ng-deep .p-dialog .p-dialog-header .p-dialog-title {
+     font-weight: bold;
+     font-size:25px;
+   }
+   .eventdetails{
+     width:30%;
+     height:100%;
+     display:flex;
+     flex-direction:column;
+     padding: 4px
+   }
+   .eventnametype{
+     width:100%;
+     height:35%;
+     border-radius: 13px;
+     border:#9F9F9F 1px solid;
+     margin-bottom: 10px;
+
+
+   }
+   .eventname{
+     font-family: Roboto,serif;
+     font-weight: bold;
+     font-size: 12px;
+     margin-left: 6px;
+
+   }
+   .eventnametype input{
+     width: 95%;
+     border: 1px solid #969696;
+     border-radius: 6px;
+     margin-left: 6px;
+   }
+
+   :host ::ng-deep .p-dropdown{
+     width: 95%;
+     border-radius: 5px;
+     margin-left: 6px;
+     margin-bottom: 10px;
+   }
+
+   :host ::ng-deep .pi{
+     color:#FF7829;
+     font-size: 1.2 rem;
+   }
+   .eventdate{
+     width:100%;
+     height:80%;
+     display: flex;
+     flex-direction: column;
+     border:#9F9F9F 1px solid;
+     border-radius:13px ;
+
+   }
+   .dateandtime{
+     color: #FF3F58;
+     font-size: 15px;
+     padding-left: 4px;
+     padding-top:4px;
+     margin-bottom: 5px;
+     font-weight: bold;
+   }
+   .date{
+     font-family: Roboto,serif;
+     font-weight: bold;
+     margin-bottom: 5px;
+     font-size: 12px;
+     margin-left: 6px;
+     padding-top: 4px;
+
+   }
+   .eventdate input{
+     width: 95%;
+     border: 1px solid #969696;
+     border-radius: 6px;
+     font-size: small;
+     height: 30px;
+     margin-left: 4px;
+   }
+   .eventrepeatcheck{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     font-size: small;
+   }
+   .togglebutton{
+     margin-top:10px;
+     width:100%;
+     height: 40%;
+     display: flex;
+     justify-content: flex-start;
+   }
+   .weeklyrepeat{
+     width:100%;
+     height: 60%;
+     margin-bottom: 10px;
+     display:flex;
+     flex-direction: column;
+     align-items: flex-end;
+   }
+   .text{
+     padding-right:88px;
+     font-weight: bold;
+     margin-bottom: 4px;
+   }
+
+   :host ::ng-deep  .weeklyrepeat .p-dropdown {
+     width: 212px;
+     border-radius: 5px;
+     margin-right: 8px;
+   }
+
+   :host ::ng-deep  .weeklyrepeat .pi {
+     color:#FF7829;
+     font-size: 1.2 rem;
+   }
+   .eventpreview{
+     width:30%;
+     height:100%;
+     border:#9F9F9F 1px solid;
+     padding:5px;
+     border-radius: 13px;
+
+   }
+   .eventpreview span{
+     margin-left: 4px;
+     font-weight: bold;
+     font-size: small;
+     margin-bottom: 10px;
+   }
+   .eventimg  input{
+     width:100%;
+     margin-bottom:10px;
+     margin-top: 10px;
+     margin-left: 6px;
+
+   }
+
+   .eventinfo{
+     width: 95%;
+     height: 250px;
+     border:#9F9F9F 1px solid;
+     border-radius: 10px;
+     margin-left: 8px;
+     margin-bottom: 5px;
+     padding:10px;
+     font-size: small;
+     font-style: normal;
+   }
+
+
+   .dancedetails{
+     display: flex;
+     flex-direction: column;
+     width:30%;
+     height:100%;
+     border:#9F9F9F 1px solid;
+     padding:5px;
+     border-radius: 13px;
+   }
+   .danceinputs {
+   width: 100%;
+   height: 50%;
+   display:flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   margin-bottom: 10px;
+   }
+   :host ::ng-deep  .danceinputs .p-dropdown{
+     width: 95%;
+     height: 100%;
+     border-radius: 5px;
+     margin-left: 6px;
+   }
+   .dancelocation{
+     width: 100%;
+   height: 20%;
+   display:flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   }
+   .createbutton{
+     width: 100%;
+     height: 30%;
+     padding-top: 10px;
+     padding-right: 10px;
+     display: flex;
+     justify-content: flex-end;
+
+   }
+   .createbutton button{
+     border:none;
+     width: 180px;
+     height: 35px;
+     border-radius:15px;
+     background-image: linear-gradient(to right, #FFA901,#FF3F58);
+     color: white;
+     font-weight: bold;
+   }
+
+
+   //toggle switch button css
+   .switch {
+     position: relative;
+     display: inline-block;
+     width: 60px;
+     height: 34px;
+   }
+
+   .switch input {
+     opacity: 0;
+     width: 0;
+     height: 0;
+   }
+
+   .slider {
+     position: absolute;
+     cursor: pointer;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #ccc;
+     -webkit-transition: .4s;
+     transition: .4s;
+   }
+
+   .slider:before {
+     position: absolute;
+     content: "";
+     height: 26px;
+     width: 26px;
+     left: 4px;
+     bottom: 4px;
+     background-color: white;
+     -webkit-transition: .4s;
+     transition: .4s;
+   }
+
+   input:checked + .slider {
+     background-color: #2196F3;
+   }
+
+   input:focus + .slider {
+     box-shadow: 0 0 1px #2196F3;
+   }
+
+   input:checked + .slider:before {
+     -webkit-transform: translateX(26px);
+     -ms-transform: translateX(26px);
+     transform: translateX(26px);
+   }
+   /* Rounded sliders */
+   .slider.round {
+     border-radius: 34px;
+   }
+
+   .slider.round:before {
+     border-radius: 50%;
+   }
+   // when the event is created we show the card on this screen
+   .eventcreated{
+   width:100%;
+   display: flex;
+    height: 100%;
+    flex-direction:column ;
+    overflow-y: scroll;
+   }
+   .createdcard{
+     width:100%;
+     height:100%;
+     display: flex;
+     flex-direction: row;
+
+   }
+   .eventschedule{
+     width:60%;
+     height: 100%;
+     display: flex;
+     justify-content: space-evenly;
+     padding-top: 10px;
+
+   }
+   .upcomingevents
+   {
+     background-color: white;
+     padding:10px;
+     width: 45%;
+     height: 85%;
+     display: flex;
+     flex-direction: column;
+     overflow-y: scroll;
+     border-radius: 5px;
+   }
+   .previousevents::-webkit-scrollbar {
+    display: none;
+  }
+  .upcomingevents::-webkit-scrollbar {
+    display: none;
+  }
+   .upcomingevents span{
+     width: 100%;
+     padding-top: 10px;
+     padding-left: 5px;
+    //  height: 10%;
+     font-weight: bold;
+     font-size: medium;
+     margin-bottom: 10px;
+   }
+   .upcomingeventsimage img{
+     width:90%;
+      height: 100px;
+     //border: 1px grey solid;
+     border-radius: 5px;
+     margin-bottom: 5px;
+     cursor: pointer;
+   }
+   .previousevents{
+    background-color: white;
+     padding:10px;
+     width: 45%;
+     height: 85%;
+     display: flex;
+     flex-direction: column;
+     overflow-y: scroll;
+     border-radius: 5px;
+   }
+
+  .previouseventsimage
+   img{
+    width: 90%;
+     height:100px;
+     border-radius: 5px;
+     margin-bottom: 10px;
+     cursor: pointer;
+  }
+  .previousevents span{
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 5px;
+    // height: 10%;
+    font-weight: bold;
+    font-size: medium;
+    margin-bottom: 10px;
+  }
+   .danceinfo{
+     padding-top: 10px;
+     width:40%;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: space-evenly;
+   }
+   .dancecity{
+     width:80%;
+     height: 40%;
+     background-color: white;
+     display: flex;
+     flex-direction: column;
+     padding: 10px;
+     margin-bottom: 20px;
+     border-radius: 5px;
+
+
+   }
+   .dancecity span{
+    width: 100%;
+    // padding-left: px;
+    // height: 10%;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: medium;
+  }
+   .danceschoolschedule{
+    width:80%;
+    height: 40%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border-radius: 5px;
+   }
+   .danceschoolschedule img{
+    width: 100%;
+    height: 70%;
+    // background-color: yellow;
+    // border: 1px grey solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+  .danceschoolschedule span{
+    width: 100%;
+    // height: 10%;
+    font-weight: bold;
+    font-size: medium;
+    margin-bottom: 5px;
+  }
+   :host ::ng-deep .dancecity .p-dropdown{
+     width: 20vw;
+     height: 100%;
+   }
+   // card's css
+   .cards-section{
+     height: 100%;
+     display: flex;
+     flex-direction:row;
+     align-items: center !important;
+     justify-content: center !important;
+     width:100%;
+     flex-wrap: wrap;
+
+   }
+   .card {
+     width: 20%;
+     display: flex;
+     flex-direction: column;
+     border-radius:10px;
+     justify-content: space-around;
+     align-items: center;
+     margin: 0.5%;
+     box-shadow: 0 13px 14px rgb(0 0 0 / 30%);
+   }
+   .card-image {
+     object-fit: cover !important;
+     width: 90%;
+     height: 25%;
+     border-radius:10px;
+
+   }
+   .card-image img {
+     padding-top: 10px;
+     object-fit: cover !important;
+     width:100% ;
+     height:100px;
+     border-radius:10px;
+     padding-bottom: 10px;
+   }
+   .card-content {
+     width: 100%;
+     height: 65%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+     align-items: center;
+   }
+   .event-detail{
+     display: flex;
+     width:100%;
+     padding-left:18px;
+   }
+   .eventname{
+     font-size: x-small;
+     font-weight: bolder;
+   }
+   .eventdate{
+     display: flex;
+     width:90%;
+     padding-left:5px;
+     justify-content: space-between;
+   }
+   .startdate{
+     font-size: x-small;
+     font-weight: bolder;
+     width:30%;
+
+   }
+   .enddate{
+     font-size: x-small;
+     font-weight: bolder;
+     width:30%;
+    margin-right: 10px;
+
+   }
+   .eventtime{
+     font-size: x-small;
+     font-weight: bolder;
+   }
+   .card-header {
+     width: 100%;
+     height:30%;
+     font-weight: bold;
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     background-color: white;
+     font-size: small;
+   }
+   .card-header-image img{
+     width:50px;
+     height:50px;
+     margin-right:10px;
+   }
+   .card-header-text{
+     width:60%;
+     height:100%;
+     font-size:x-small;
+     color: black;
+     display: flex;
+     flex-direction: column;
+   }
+   .card-header-text-para{
+     font-weight: normal;
+     font-size: x-small;
+   }
+   .card-para {
+     width: 100%;
+     height:100%;
+     display: flex;
+     flex-direction:column;
+     justify-content: flex-start;
+     font-size: small;
+   }
+   .card-para p{
+     overflow : hidden;
+     text-overflow: ellipsis;
+     display: -webkit-box;
+     -webkit-line-clamp: 2;
+     -webkit-box-orient: vertical
+   }
+   .para-heading{
+     margin-left:20px;
+     margin-top:5px;
+     margin-right: 5px;
+     font-weight: bolder;
+
+   }
+   .card-para p{
+     margin-left:20px;
+     margin-top:5px;
+     margin-right: 10px;
+     font-size: smaller;
+   }
+
+   .eventdetails{
+     width:30%;
+     height:100%;
+     display:flex;
+     flex-direction:column;
+     padding: 4px
+   }
+   .eventnametype{
+     width:100%;
+     height:35%;
+     border-radius: 13px;
+     border:#9F9F9F 1px solid;
+     margin-bottom: 10px;
+
+
+   }
+   .eventname{
+     font-family: Roboto,serif;
+     font-weight: bold;
+     font-size: 12px;
+     margin-left: 6px;
+
+   }
+   .eventnametype input{
+     width: 95%;
+     border: 1px solid #969696;
+     border-radius: 6px;
+     margin-left: 6px;
+   }
+
+   :host ::ng-deep .p-dropdown{
+     width: 95%;
+     border-radius: 5px;
+     margin-left: 6px;
+     margin-bottom: 10px;
+   }
+
+   :host ::ng-deep .pi{
+     color:#FF7829;
+     font-size: 1.2 rem;
+   }
+   .eventdate{
+     width:100%;
+     height:80%;
+     display: flex;
+     flex-direction: column;
+     border:#9F9F9F 1px solid;
+     border-radius:13px ;
+
+   }
+   .dateandtime{
+     color: #FF3F58;
+     font-size: 15px;
+     padding-left: 4px;
+     padding-top:4px;
+     margin-bottom: 5px;
+     font-weight: bold;
+   }
+   .date{
+     font-family: Roboto,serif;
+     font-weight: bold;
+     margin-bottom: 5px;
+     font-size: 12px;
+     margin-left: 6px;
+     padding-top: 4px;
+
+
+   }
+   .eventdate input{
+     width: 95%;
+     border: 1px solid #969696;
+     border-radius: 6px;
+     font-size: small;
+     height: 30px;
+     margin-left: 4px;
+   }
+   .eventrepeatcheck{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     font-size: small;
+   }
+   .togglebutton{
+     margin-top:5px;
+     width:100%;
+     height: 40%;
+     display: flex;
+     justify-content: flex-start;
+   }
+   .weeklyrepeat{
+     width:100%;
+     height: 60%;
+     margin-bottom: 10px;
+     display:flex;
+     flex-direction: column;
+     align-items: flex-end;
+   }
+   .text{
+     padding-right:88px;
+     font-weight: bold;
+     margin-bottom: 4px;
+   }
+
+   :host ::ng-deep  .weeklyrepeat .p-dropdown {
+     width: 212px;
+     border-radius: 5px;
+     margin-right: 8px;
+   }
+
+   :host ::ng-deep  .weeklyrepeat .pi {
+     color:#FF7829;
+     font-size: 1.2 rem;
+   }
+   .eventpreview{
+     width:30%;
+     height:100%;
+     border:#9F9F9F 1px solid;
+     padding:5px;
+     border-radius: 13px;
+
+   }
+   .eventpreview span{
+     margin-left: 4px;
+     font-weight: bold;
+     font-size: small;
+     margin-bottom: 10px;
+   }
+   .eventimg  img{
+     width:100%;
+     background-color: #F43758;
+     margin-bottom:10px;
+     margin-top: 10px;
+
+   }
+   .eventimg  input{
+     width:100%;
+     margin-bottom:10px;
+     margin-top: 10px;
+     margin-left: 6px;
+
+   }
+
+   .eventinfo{
+     width: 95%;
+     height: 250px;
+     border:#9F9F9F 1px solid;
+     border-radius: 10px;
+     margin-left: 8px;
+     margin-bottom: 5px;
+     padding:10px;
+     font-size: small;
+     font-style: normal;
+   }
+
+
+   .dancedetails{
+     display: flex;
+     flex-direction: column;
+     width:30%;
+     height:100%;
+     border:#9F9F9F 1px solid;
+     padding:5px;
+     border-radius: 13px;
+   }
+   .danceinputs {
+   width: 100%;
+   height: 50%;
+   display:flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   margin-bottom: 10px;
+   }
+   :host ::ng-deep  .danceinputs .p-dropdown{
+     width: 95%;
+     height: 100%;
+     border-radius: 5px;
+     margin-left: 6px;
+   }
+   .dancelocation{
+     width: 100%;
+   height: 30%;
+   display:flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+   }
+   .createbutton{
+     width: 100%;
+     height: 30%;
+     padding-top: 10px;
+     padding-right: 10px;
+     display: flex;
+     justify-content: flex-end;
+
+   }
+   .createbutton button{
+     border:none;
+     width: 180px;
+     height: 35px;
+     border-radius:15px;
+     background-image: linear-gradient(to right, #FFA901,#FF3F58);
+     color: white;
+     font-weight: bold;
+   }
+
+
+   //toggle switch button css
+   .switch {
+     position: relative;
+     display: inline-block;
+     width: 60px;
+     height: 34px;
+   }
+
+   .switch input {
+     opacity: 0;
+     width: 0;
+     height: 0;
+   }
+
+   .slider {
+     position: absolute;
+     cursor: pointer;
+     top: 0;
+     left: 0;
+     right: 0;
+     bottom: 0;
+     background-color: #ccc;
+     -webkit-transition: .4s;
+     transition: .4s;
+   }
+
+   .slider:before {
+     position: absolute;
+     content: "";
+     height: 26px;
+     width: 26px;
+     left: 4px;
+     bottom: 4px;
+     background-color: white;
+     -webkit-transition: .4s;
+     transition: .4s;
+   }
+
+   input:checked + .slider {
+     background-color: #2196F3;
+   }
+
+   input:focus + .slider {
+     box-shadow: 0 0 1px #2196F3;
+   }
+
+   input:checked + .slider:before {
+     -webkit-transform: translateX(26px);
+     -ms-transform: translateX(26px);
+     transform: translateX(26px);
+   }
+   /* Rounded sliders */
+   .slider.round {
+     border-radius: 34px;
+   }
+
+   .slider.round:before {
+     border-radius: 50%;
+   }
+   .editingbutton{
+
+   width: 100%;
+   height: 12%;
+   padding-left: 140px;
+   margin-bottom: 5px;
+   }
+   .editingbutton button{
+
+     width:80%;
+     height:60%;
+     border:none;
+     border-radius: 15px;
+     background: linear-gradient(268.98deg, #FF3F58 -1.23%, #FFA901 95.9%);
+     color:white;
+     font-size:16px;
+   }
+
+
+   /*
+Mobile Responsiveness*/
+@media(max-width: 1024px)
+
+{
+
+  :host ::ng-deep  .weeklyrepeat .p-dropdown {
+    width: 90%;
+    border-radius: 5px;
+    margin-right: 8px;
+  }
+
+  .content-layout {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+.contentsidebar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 55%;
+    background-color: #FCE54D;
+}
+
+.logo-section {
+height: 65%;
+/* width: 100%; */
+padding-left: 0px;
+padding-top: 20px;
+display: flex;
+flex-direction: row;
+margin-bottom: 15px;
+align-items: center;
+justify-content: center;
+}
+
+.navigatebutton {
+  // height: 60%;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 0px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  padding-right: 0px;
+}
+.loginbtn-section {
+height: 33%;
+width: 100%;
+display: flex;
+flex-direction: row;
+padding-top: 0;
+padding-left:0px;
+align-items: center;
+
+}
+.loginbtn-div{
+width:100%;
+height:100%;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+margin-bottom: 15px;
+padding-left: 13px;
+}
+.loginbtn-div button{
+width:14%;
+height:72%;
+border:none;
+border-radius: 15px;
+background: linear-gradient(268.98deg, #FF3F58 -1.23%, #FFA901 95.9%);
+color:white;
+font-size:16px;
+
+
+}
+.maincontent{
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 100%;
+background-color: #F5F3F3;
+}
+.createevent-modal {
+  width: 100%;
+  height: 20%;
+  display: flex;
+  margin-bottom: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
+.textandbutton
+{
+  margin-top: 20px;
+  padding-left: 0px;
+  width: 70%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.textandbutton button {
+  background: linear-gradient(268.98deg, #FE4059 -1.23%, #FE7230 95.9%);
+  color:white;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+ border-radius: 15px;
+ width:50%;
+height:40%;
+min-width: 65%;
+min-height: 40%;
+}
+.previouseventsimage img {
+  width: 90%;
+  height: 92px;
+  border-radius: 5px;
+  margin: 5px;
+}
+ .upcomingeventsimage img{
+  width: 90%;
+  height: 92px;
+  border-radius: 5px;
+  margin: 5px;
+ }
+.createdcard  {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  // overflow-y: scroll;
+}
+.eventschedule {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 42px;
+  flex-direction: row;
+  align-items: center;
+  // background-color:red;
+
+}
+.eventcreated  {
+  width: 100%;
+  display: flex;
+   height: 100%;
+   flex-direction: column;
+  overflow-y: scroll;
+}
+.danceinfo  {
+  padding-top: 10px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.danceschoolschedule
+ {
+  width: 80%;
+  height: 60%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+//modal mobile responsiveness
+:host ::ng-deep .p-dialog .p-dialog-content {
+  color: #495057;
+ // padding: 0 1.5rem 2rem 1.5rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width:100%;
+  //height: 100%;
+  display:block;
+  flex-direction:column;
+  justify-content: space-evenly;
+
+}
+.eventdetails {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
+}
+.eventpreview{
+width: 100%;
+height: 100%;
+border: #9F9F9F 1px solid;
+padding: 5px;
+border-radius: 13px;
+}
+.dancedetails {
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 100%;
+border: #9F9F9F 1px solid;
+padding: 5px;
+border-radius: 13px;
+}
+:host ::ng-deep .dancecity .p-dropdown{
+  width: 95%;
+  height: 100%;
+}
+.dancecity{
+  width:80%;
+  height: 40%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+
+
+}
+
+}
+
+
+
+

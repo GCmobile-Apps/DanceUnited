@@ -1,0 +1,214 @@
+<div class="container p-5 table-wrapper">
+  <p-progressSpinner *ngIf="loader"></p-progressSpinner>
+
+  <div class="row mt-5 d-flex justify-content-center" *ngIf="noData">
+    <div class="col-5">
+      <p-card>
+        <p>No Events have been created yet.</p>
+      </p-card>
+    </div>
+  </div>
+
+
+  <div class="parent-table-event-users row" *ngIf="!loader && !noData">
+    <p-toast></p-toast>
+    <div class="col-12">
+      <h1>Events</h1>
+        <p-table [value]="allEvents" class="allEventsTable"   [scrollable]="true"
+                 [paginator]="true" [rows]="25" [showCurrentPageReport]="true" [totalRecords]="allEvents.length"
+                 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[25,50,100]">
+          <ng-template pTemplate="colgroup" let-columns>
+            <colgroup>
+              <col style="width:100px">
+              <col style="width:200px">
+              <col style="width:220px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+<!--              <col style="width:250px">-->
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:150px">
+              <col style="width:250px">
+            </colgroup>
+          </ng-template>
+          <ng-template pTemplate="header">
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Description</th>
+              <th>Professional User</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Location</th>
+<!--              <th>Prize</th>-->
+              <th>Type</th>
+              <th>Main Style</th>
+              <th>Do Not Repeat</th>
+              <th>Start Time</th>
+              <th>End Time</th>
+              <th>RelatedStyle 1</th>
+              <th>RelatedStyle 2</th>
+              <th>RelatedStyle 3</th>
+              <th>View Counter</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-event>
+            <tr>
+              <td>
+                <button pButton type="button"  icon="pi pi-user-edit" class="p-button-raised p-button-rounded p-button-success" (click)="openNew(event)"></button>
+                <button pButton type="button"  icon="pi pi-trash" class="p-button-raised p-button-rounded ml-2 p-button-danger" (click)="deleteEvent(event)"></button>
+              </td>
+              <td>{{event.Title}}</td>
+              <td>{{event.Description | slice:0:50}}</td>
+              <td>{{event.EventProUser}}</td>
+              <td>{{event.StartDate}}</td>
+              <td>{{event.EndDate}}</td>
+              <td>{{event.Location}}</td>
+<!--              <td>{{event.Prize}}</td>-->
+              <td>{{event.Type}}</td>
+              <td>{{event.Tags}}</td>
+              <td>{{event.notRepeat}}</td>
+              <td>{{event.startTime}}</td>
+              <td>{{event.endTime}}</td>
+              <td>{{event.relatedStyle1}}</td>
+              <td>{{event.relatedStyle2}}</td>
+              <td>{{event.relatedStyle3}}</td>
+              <td>{{event.viewCounter}}</td>
+
+            </tr>
+          </ng-template>
+        </p-table>
+
+      <p-dialog [(visible)]="eventDialog" [style]="{width: '450px'}" header="Edit Event" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+          <div >
+            <img [src]="event.ImageUrl" [(ngModel)]="event.ImageUrl" alt="Image not found" height="200px"/>
+          </div>
+          <div class="p-field">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="eventImage" name="ImageUrl"
+                     #fileInput (change)="onFileChanged($event)" [(ngModel)]="event.ImageUrl">
+              <label class="custom-file-label" for="eventImage">Choose Image</label>
+            </div>
+          </div>
+          <div class="p-field">
+            <label>Name</label>
+            <input type="text" pInputText [(ngModel)]="event.Title" required autofocus name="title" />
+          </div>
+          <div class="p-field">
+            <label>Description</label>
+            <textarea type="text" pInputTextarea [(ngModel)]="event.Description" required name="description"></textarea>
+          </div>
+<!--          <div class="p-field">-->
+<!--            <label for="proUser">Select Professional User</label>-->
+<!--            <select class="form-control" name="proUser" id="proUser" ngModel required #prouser="ngModel">-->
+<!--              <option *ngFor="let user of profUsers" [value]="user.userID">-->
+<!--                {{user.UserID}}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          </div>-->
+          <div class="p-field">
+            <label>Start Time</label>
+            <p-calendar [timeOnly]="true" hourFormat="12" class="timer"  [(ngModel)]="event.startTime" name="startTime">
+            </p-calendar>
+          </div>
+          <div class="p-field">
+            <label>End Time</label>
+            <p-calendar [timeOnly]="true" hourFormat="12" class="timer"  [(ngModel)]="event.endTime" name="endTime">
+            </p-calendar>
+          </div>
+          <div class="p-field">
+            <label>Start Date</label><br>
+            <p-calendar name="StartDate"  dateFormat="yy-mm-dd" [(ngModel)]="event.StartDate" ></p-calendar>
+          </div>
+          <div class="p-field">
+            <label>End Date</label><br>
+            <p-calendar name="StartDate"  dateFormat="yy-mm-dd" [(ngModel)]="event.EndDate"></p-calendar>
+          </div>
+
+          <div class="p-field">
+            <label>Series End Date</label><br>
+            <p-calendar name="SeriesEndDate"  dateFormat="yy-mm-dd" [(ngModel)]="event.SeriesEndDate"></p-calendar>
+          </div>
+
+          <div class="p-field">
+            <label>Location</label>
+            <input type="text" pInputText [(ngModel)]="event.Location" required  name="Location" />
+
+            <!--            <p-dropdown [(ngModel)]="event.Location"  [options]="locations" optionValue="value" placeholder="Location">-->
+<!--              <ng-template let-option pTemplate="item">-->
+<!--                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>-->
+<!--              </ng-template>-->
+<!--            </p-dropdown>-->
+          </div>
+          <div class="p-field">
+            <label>Select main style</label>
+            <p-dropdown [(ngModel)]="event.Tags"  [options]="preferences" optionValue="value" placeholder="{{event.Tags}}" name="Tags">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Do not repeat</label>
+            <p-dropdown [(ngModel)]="event.notRepeat"  [options]="weekDays" optionValue="value" placeholder="Do not repeat" name="notRepeat">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Related Style 1</label>
+            <p-dropdown [(ngModel)]="event.relatedStyle1"  [options]="preferences" optionValue="value" placeholder="{{event.relatedStyle1}}" name="relatedStyle1">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+          <div class="p-field">
+            <label>Related Style 2</label>
+            <p-dropdown [(ngModel)]="event.relatedStyle2"  [options]="preferences" optionValue="value" placeholder="{{event.relatedStyle2}}" name="relatedStyle2">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Related Style 3</label>
+            <p-dropdown [(ngModel)]="event.relatedStyle3"  [options]="preferences" optionValue="value" placeholder="{{event.relatedStyle3}}" name="relatedStyle3">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="p-field" hidden>
+            <label>Prize</label>
+            <p-dropdown [(ngModel)]="event.Prize"  [options]="prizeOptions" optionValue="value" placeholder="Prize" name="Prize">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>View Counter</label>
+            <input type="number" pInputText [(ngModel)]="event.viewCounter" required  name="viewCounter">
+          </div>
+
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+          <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="editEvent()"></button>
+        </ng-template>
+      </p-dialog>
+      <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+  </div>
+
+</div>

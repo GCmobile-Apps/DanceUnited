@@ -1,0 +1,35 @@
+
+.stats-block{
+  padding: 40px 20px;
+  border: 1px solid grey;
+  text-align: center;
+
+
+  .counter-label{
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+.table-bordered th, .table-bordered tr{
+  border: none !important;
+}
+.table-bordered td {
+  &:first-child{
+      width: 70%;
+  }
+  border: 1px solid #333 !important;
+}
+.stats-table{
+  border:1px solid black;
+  td{
+    width: 100px;
+    padding:0.5rem;
+  }
+
+}
+:host ::ng-deep .p-progress-spinner{
+  position: absolute;
+  z-index: 1;
+  top: 33%;
+  left: 35%;
+}

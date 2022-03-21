@@ -1,0 +1,52 @@
+<p-progressSpinner *ngIf="loader"></p-progressSpinner>
+
+<div class="container mt-3" *ngIf="!loader">
+
+  <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-md-3 stats-block">
+          <div class="counter-div font-weight-bold fa-4x">
+            {{users.length}}
+          </div>
+          <div class="counter-label font-weight-bold">
+            Dancers
+          </div>
+        </div>
+        <div class="col-md-3 stats-block">
+          <div class="counter-div font-weight-bold fa-4x">
+            {{proUsers.length}}
+          </div>
+          <div class="counter-label font-weight-bold">
+            Professionals
+          </div>
+        </div>
+        <div class="col-md-3 stats-block">
+          <div class="counter-div font-weight-bold fa-4x">
+            {{events.length}}
+          </div>
+          <div class="counter-label font-weight-bold">
+            Events
+          </div>
+        </div>
+  </div>
+
+
+  <div class="row d-flex justify-content-center align-items-center mt-3">
+
+    <div class="col-md-9 ">
+      <table class="table table-bordered stats-table border-dark">
+        <tr>
+          <th></th>
+          <th>Active</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let category of statsCategories">
+          <td class="font-weight-bolder">{{category.eventType}}</td>
+          <td>{{category.activeCount}}</td>
+          <td>{{category.totalCount}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+
+</div>

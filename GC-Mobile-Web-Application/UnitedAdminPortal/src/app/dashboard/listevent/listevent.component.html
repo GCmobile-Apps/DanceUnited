@@ -1,0 +1,236 @@
+<div class="containerbox">
+    <div class="content-layout" >
+      <div class="maincontent">
+        <div class="createevent-modal">
+
+          <div class="textandbutton">
+            <!-- <span class="hellotext">My Events</span> -->
+            <button (click)="showBasicDialog()" >Create Event</button>
+          </div>
+          <!-- <div class="textandbutton">
+            <button  (click)="getevents()" >List Event</button>
+          </div> -->
+
+          <p-dialog header="New event" [(visible)]="displayModal" [modal]="true" [style]="{width: '80vw'}" [baseZIndex]="10000"
+                    [draggable]="false" [resizable]="true">
+            <div class="eventdetails">
+              <div class="eventnametype">
+               <span class="eventname">Event name</span>
+                <input type="text" [(ngModel)] = "event.eventname">
+                <span class="eventname">Event type</span>
+                <p-dropdown [options]="dancetype" [(ngModel)]="event.eventtype"  dataKey="{{event.eventtype}} "placeholder="   " optionLabel="name"
+                            [showClear]="true"></p-dropdown>
+              </div>
+              <div class="eventdate">
+               <span class="dateandtime">Date & time</span>
+               <span class="date" >Start Date</span>
+               <input type="date"[(ngModel)] = "event.startdate" >
+               <span class="date" >Start Time</span>
+               <input type="time" [(ngModel)] = "event.starttime">
+               <span class="date" >End Date</span>
+               <input type="date" [(ngModel)] = "event.enddate">
+               <span class="date" >End Time</span>
+               <input type="time"[(ngModel)] = "event.endtime" >
+               <div class="eventrepeatcheck">
+
+                <div class="togglebutton">
+               <!-- <label class="switch">
+                <input type="checkbox" checked>
+                 <span class="slider round"></span>
+                </label>
+                  <span>Event repeats weekly</span> -->
+                </div>
+               <div class="weeklyrepeat">
+                <span style="font-size: small;" class="text">Weekly repeating day</span>
+                <p-dropdown    [options]="repeat" [(ngModel)]="event.repeatingday" dataKey="{{event.repeatingday}} " placeholder="   " optionLabel="name"
+                            [showClear]="true" width:20px></p-dropdown>
+               </div>
+
+              </div>
+              </div>
+
+            </div>
+            <div class="eventpreview">
+             <span class="dateandtime">Preview image</span>
+             <div class="eventimg">
+               <input (change)="fileChange($event)" type="file" id="myfile" name="myfile" [(ngModel)]="event.eventfile">
+
+             </div>
+             <span>Details</span>
+             <textarea  class="eventinfo" type="textarea" [(ngModel)] = "event.description"></textarea>
+            </div>
+            <div class="dancedetails">
+             <span class="dateandtime">Dance Style</span>
+             <div class="danceinputs">
+              <span class="eventname">Main*</span>
+              <p-dropdown [options]="main" [(ngModel)]="event.mainstyle"  dataKey="{{event.mainstyle}} "placeholder="   " optionLabel="name"
+                          [showClear]="true"></p-dropdown>
+              <span class="eventname">Related 1</span>
+               <p-dropdown [options]="relatedstyle1" [(ngModel)]="event.related1" dataKey="{{event.related1}} " placeholder="   " optionLabel="name"
+                                      [showClear]="true"></p-dropdown>
+               <span class="eventname">Related 2</span>
+                <p-dropdown [options]="relatedstyle2" [(ngModel)]="event.related2" dataKey="{{event.related2}} "placeholder="   " optionLabel="name"
+                                                  [showClear]="true"></p-dropdown>
+                <span class="eventname">Related 3</span>
+                 <p-dropdown [options]="relatedstyle3" [(ngModel)]="event.related3" dataKey="{{event.related3}} " placeholder="   " optionLabel="name"
+                                                              [showClear]="true"></p-dropdown>
+             </div>
+             <div class="dancelocation">
+               <span class="dateandtime">Location</span>
+              <span class="eventname">City*</span>
+              <p-dropdown [options]="cities" [(ngModel)]="event.city"dataKey="{{event.city}} " placeholder="   " optionLabel="name"
+                          [showClear]="true"></p-dropdown>
+            <span class="eventname">Country*</span>
+               <p-dropdown [options]="countries" [(ngModel)]="event.country" dataKey="{{event.country}} "placeholder="   " optionLabel="name"
+                                      [showClear]="true"></p-dropdown>
+                <div class="createbutton">
+                  <button (click) = "Createevent()">Create Event</button>
+                </div>
+
+             </div>
+
+            </div>
+
+          </p-dialog>
+        </div>
+
+
+  <!-- after create event showing and editing event starts from here  -->
+        <div class="eventcreated">
+          <div class="createdcard">
+
+          <div class="cards-section" >
+            <div class="card" *ngFor="let details of this.events"  >
+
+              <div class="card-image" >
+                <img src="{{details.ImageUrl}}">
+              </div>
+              <div class="card-content">
+                <div class="event-detail">
+                  <span class="eventname">{{details.Title}}</span>
+                </div>
+                <div class="eventdates">
+                  <span class="startdate">{{details.StartDate | replaceUnderscore}}</span>
+                  <!--  <span class="enddate">{{b.EndDate}}</span>-->
+                  <span class="eventtime">{{details.endTime}}</span>
+                </div>
+                <div class="card-header">
+              <span class="card-header-image">
+                <img [src]="">
+              </span>
+                  <span class="card-header-text">
+                  <span class="card-header-text-heading">{{details.OrganizerName}}</span>
+                <span class="card-header-text-para">Event Organizers</span>
+              </span>
+                </div>
+                <div class="card-para">
+              <span class="para-heading">
+               Details
+              </span>
+                  <p>{{details.Description}}</p>
+                </div>
+
+           <!-- Edit function of cards -->
+           <div class = "editingbutton" >
+            <button (click)="deletevent(details.EventID)" > Delete</button>
+            <button (click)="getevent(details.EventID)" > Edit</button>
+          </div>
+
+              </div>
+            </div>
+          </div>
+          </div>
+   <!-- will contain the modal of edit event and its button -->
+
+          <div class="editediting">
+
+            <div class="eventediting">
+              <p-dialog header="Edit event" [(visible)]="displayModal2" [style]="{width: '80vw'}">
+                <div class="eventdetails">
+                  <div class="eventnametype">
+                   <span class="eventname">Event name</span>
+                    <input type="text" [(ngModel)] = "event.eventname">
+                    <span class="eventname">Event type</span>
+                    <p-dropdown [options]="dancetype" [(ngModel)]="event.eventtype" placeholder="   " optionLabel="name"
+                                [showClear]="true"></p-dropdown>
+                  </div>
+                  <div class="eventdate">
+                   <span class="dateandtime">Date & time</span>
+                   <span class="date" >Start Date</span>
+                   <input type="date"[(ngModel)] = "event.startdate" >
+                   <span class="date" >Start Time</span>
+                   <input type="time" [(ngModel)] = "event.starttime">
+                   <span class="date" >End Date</span>
+                   <input type="date" [(ngModel)] = "event.enddate">
+                   <span class="date" >End Time</span>
+                   <input type="time"[(ngModel)] = "event.endtime" >
+                   <div class="eventrepeatcheck">
+                    <!-- Rounded switch -->
+                    <div class="togglebutton">
+                  <!-- <label class="switch">
+                    <input type="checkbox" checked>
+                     <span class="slider round"></span>
+                    </label>
+                      <span>Event repeats weekly</span> -->
+                    </div>
+                   <div class="weeklyrepeat">
+                    <span style="font-size: small;" class="text">Weekly repeating day</span>
+                    <p-dropdown    [options]="repeat" [(ngModel)]="event.repeatingday" placeholder="   " optionLabel="name"
+                                [showClear]="true" width:20px></p-dropdown>
+                   </div>
+
+                  </div>
+                  </div>
+
+                </div>
+                <div class="eventpreview">
+                 <span class="dateandtime">Preview image</span>
+                 <div class="eventimg">
+                   <img src="{{event.eventfile}}">
+                   <input (change)="fileChange($event)" type="file" id="myfile" name="myfile" [(ngModel)]="event.eventfile">
+
+                 </div>
+                 <span>Details</span>
+                 <textarea  class="eventinfo" type="textarea" [(ngModel)] = "event.description"></textarea>
+                </div>
+                <div class="dancedetails">
+                 <span class="dateandtime">Dance Style</span>
+                 <div class="danceinputs">
+                  <span class="eventname">Main*</span>
+                  <p-dropdown [options]="main" [(ngModel)]="event.mainstyle" placeholder="   " optionLabel="name"
+                              [showClear]="true"></p-dropdown>
+                  <span class="eventname">Related 1</span>
+                   <p-dropdown [options]="relatedstyle1" [(ngModel)]="event.related1" placeholder="   " optionLabel="name"
+                                          [showClear]="true"></p-dropdown>
+                   <span class="eventname">Related 2</span>
+                    <p-dropdown [options]="relatedstyle2" [(ngModel)]="event.related2" placeholder="   " optionLabel="name"
+                                                      [showClear]="true"></p-dropdown>
+                    <span class="eventname">Related 3</span>
+                     <p-dropdown [options]="relatedstyle3" [(ngModel)]="event.related3" placeholder="   " optionLabel="name"
+                    [showClear]="true"></p-dropdown>
+                 </div>
+                 <div class="dancelocation">
+                   <span class="dateandtime">Location</span>
+                  <span class="eventname">City*</span>
+                  <p-dropdown [options]="cities" [(ngModel)]="event.city" placeholder="   " optionLabel="name"
+                              [showClear]="true"></p-dropdown>
+                <span class="eventname">Country*</span>
+                   <p-dropdown [options]="countries" [(ngModel)]="event.country" placeholder="   " optionLabel="name"
+                                          [showClear]="true"></p-dropdown>
+                    <div class="createbutton">
+                      <button (click) = "editevent()">Edit Event</button>
+                    </div>
+
+                 </div>
+
+                </div>
+
+              </p-dialog>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+</div>

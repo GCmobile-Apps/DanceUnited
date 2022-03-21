@@ -1,0 +1,49 @@
+
+
+<div class="row mt-5 d-flex justify-content-center" *ngIf="noData">
+  <div class="col-5">
+    <p-card>
+      <p>No Links have been added yet.</p>
+    </p-card>
+  </div>
+</div>
+
+<div class="container  p-5" style="padding-top: 0 !important;" *ngIf="!noData">
+  <p-toast></p-toast>
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">Update Links</div>
+        <div class="card-body">
+          <div class="container">
+<!--            <div class="d-flex justify-content-between">-->
+<!--              <h5>Title</h5>-->
+<!--              <h5>Link</h5>-->
+<!--              <h5>Update</h5>-->
+<!--            </div>-->
+            <div class="row" *ngFor="let link of links">
+              <div class="col-md-2 col-sm-12">{{link.link_title}}</div>
+              <form #updateLinkForm="ngForm" (ngSubmit)="updateLink(link)" class="col-md-8 col-sm-12">
+                <input type="text" name="idlinks" [(ngModel)]="link.idlinks" hidden>
+                <div class="row">
+                  <div class="col-8">
+                    <div class="form-group">
+                      <input type="url" class="form-control" name="linkValue"
+                             [(ngModel)]="link.link_value"  placeholder="https://google.com">
+                    </div>
+                  </div>
+                  <div class="col-md-2 col-sm-12">
+                    <button type="submit" class="btn  add-record-btn">Update</button>
+                  </div>
+                </div>
+
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

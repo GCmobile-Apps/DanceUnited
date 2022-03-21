@@ -1,0 +1,204 @@
+<p-progressSpinner *ngIf="loader"></p-progressSpinner>
+
+
+<p-toggleButton [(ngModel)]="checked2" onLabel="Disable Promotions" offLabel="Enable Promotions"
+                onIcon="pi pi-check" offIcon="pi pi-times" [style]="{'width': '20em'}"
+                (onChange)="onToggleChange($event)">
+</p-toggleButton>
+
+<div class="container p-5 table-wrapper" *ngIf="!loader && !noData" >
+  <div class="parent-table row">
+    <p-toast></p-toast>
+    <div class=" col-12 mt-2">
+
+      <h1>Promotions</h1>
+
+
+      <div class="p-field">
+        <p-dropdown [(ngModel)]="parentCategory"  [options]="promotionCategories" optionValue="value" placeholder="Choose Promotion Type"
+        (ngModelChange)="getPromotions()">
+          <ng-template let-option pTemplate="item">
+            <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
+
+      <div class="row mt-5 d-flex justify-content-center" *ngIf="promotions.length === 0">
+        <div class="col-12">
+          <p-card>
+            <p>No Promotions for this category have been added yet.</p>
+          </p-card>
+        </div>
+      </div>
+
+
+      <br>
+      <p-table [value]="promotions" class="allEventsTable "   [scrollable]="true"  *ngIf="promotions.length !== 0"
+               [paginator]="true" [rows]="25" [showCurrentPageReport]="true" [totalRecords]="promotions.length"
+               currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[25,50,100]">
+        <ng-template pTemplate="colgroup" let-columns>
+          <colgroup>
+            <col style="width:100px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:150px">
+            <col style="width:250px">
+
+          </colgroup>
+        </ng-template>
+        <ng-template pTemplate="header">
+          <tr>
+            <th></th>
+            <th>Offer Title</th>
+            <th>User</th>
+            <th>Event</th>
+            <th>Destination Link</th>
+            <th>Main Style</th>
+            <th>City</th>
+            <th>Related Style 1</th>
+            <th>Related Style 2</th>
+            <th>Related Style 3</th>
+
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-promotion>
+          <tr>
+            <td>
+              <button pButton type="button"  icon="pi pi-user-edit" class="p-button-raised p-button-rounded p-button-success" (click)="openNew(promotion)"></button>
+              <button pButton type="button"  icon="pi pi-trash" class="p-button-raised p-button-rounded ml-2 p-button-danger" (click)="deletePromotion(promotion)"></button>
+            </td>
+            <td>{{promotion.offerTitle}}</td>
+            <td>
+              <span *ngFor="let user of users">
+                <span *ngIf="user.userID === promotion.userID">
+                  {{user.title}}
+                </span>
+              </span>
+            </td>
+            <td>
+               <span *ngFor="let event of events">
+                <span *ngIf="event.EventID === promotion.eventID">
+                  {{event.Title}}
+                </span>
+              </span>
+            </td>
+            <td>{{promotion.promoType === 'External Promo'?promotion.destinationLink:'--'}}</td>
+            <td>{{promotion.mainStyle}}</td>
+            <td>{{promotion.promoCity}}</td>
+            <td>{{promotion.relatedStyle1}}</td>
+            <td>{{promotion.relatedStyle2}}</td>
+            <td>{{promotion.relatedStyle3}}</td>
+
+
+          </tr>
+        </ng-template>
+      </p-table>
+
+      <p-dialog [(visible)]="editPromoDialog" [style]="{width: '450px'}" header="Edit Promotion" [modal]="true" styleClass="p-fluid">
+        <ng-template pTemplate="content">
+          <div >
+            <img [src]="promotion.promoImageUrl"  alt="Image not found" height="200px"/>
+          </div>
+          <div class="p-field">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="eventImage" name="ImageUrl"
+                     #fileInput (change)="onFileChanged($event)" [(ngModel)]="promotion.promoImageUrl">
+              <label class="custom-file-label" for="eventImage">
+                {{imgName!=''?imgName:'Choose Image'}}
+              </label>
+            </div>
+          </div>
+<!--          <div >-->
+<!--            <img [src]="event.ImageUrl" [(ngModel)]="event.ImageUrl" alt="Image not found" height="200px"/>-->
+<!--          </div>-->
+<!--          <div class="p-field">-->
+<!--            <div class="custom-file">-->
+<!--              <input type="file" class="custom-file-input" id="eventImage" name="ImageUrl"-->
+<!--                     #fileInput (change)="onFileChanged($event)" [(ngModel)]="event.ImageUrl">-->
+<!--              <label class="custom-file-label" for="eventImage">Choose Image</label>-->
+<!--            </div>-->
+<!--          </div>-->
+          <div class="p-field">
+            <label>Offer Title</label>
+            <input type="text" pInputText [(ngModel)]="promotion.offerTitle"  autofocus name="offerTitle" />
+          </div>
+          <div class="p-field" *ngIf="promotion.promoType==='External Promo'">
+            <label>Destination Link</label>
+            <input type="text" pInputTextarea [(ngModel)]="promotion.destinationLink"  name="destinationLink"/>
+          </div>
+
+          <div class="p-field">
+            <label>Location</label>
+            <input type="text" pInputText [(ngModel)]="promotion.promoCity"   name="promoCity" />
+
+<!--            <p-dropdown [(ngModel)]="promotion.promoCity"  [options]="locations" optionValue="value" placeholder="Location">-->
+<!--              <ng-template let-option pTemplate="item">-->
+<!--                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>-->
+<!--              </ng-template>-->
+<!--            </p-dropdown>-->
+          </div>
+          <div class="p-field">
+            <label>Select User</label>
+            <select class="form-control"  name="userID" [(ngModel)]="promotion.userID" required
+                    #user="ngModel">
+              <option *ngFor="let user of users" value="{{user.userID}}">
+                {{user.title}}
+              </option>
+            </select>
+            <span class="text-danger mb-1 p-mt-0 ml-1 small" *ngIf="user.invalid && user.touched">
+                       Required
+                  </span>
+          </div>
+
+          <div class="p-field">
+            <label>Select Main style</label>
+            <p-dropdown [(ngModel)]="promotion.mainStyle"  [options]="danceStyles" optionValue="value" placeholder="Main style">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+          <div class="p-field">
+            <label>Related Style 1</label>
+            <p-dropdown [(ngModel)]="promotion.relatedStyle1"  [options]="danceStyles" optionValue="value" placeholder="Related Style 1">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+          <div class="p-field">
+            <label>Related Style 2</label>
+            <p-dropdown [(ngModel)]="promotion.relatedStyle2"  [options]="danceStyles" optionValue="value" placeholder="Related Style 2">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+          <div class="p-field">
+            <label>Related Style 3</label>
+            <p-dropdown [(ngModel)]="promotion.relatedStyle3"  [options]="danceStyles" optionValue="value" placeholder="Related Style 3">
+              <ng-template let-option pTemplate="item">
+                <span [class]="'product-badge status-' + option.value">{{option.label}}</span>
+              </ng-template>
+            </p-dropdown>
+          </div>
+
+        </ng-template>
+        <ng-template pTemplate="footer">
+          <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+          <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="editPromotion()"></button>
+        </ng-template>
+      </p-dialog>
+      <p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+    </div>
+  </div>
+
+</div>
